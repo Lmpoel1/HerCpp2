@@ -8,12 +8,13 @@
 
 class WaveFormat: SoundFile {
 public:
-    WaveFormat();
+    WaveFormat(const std::string& filePath);
     void ReadHiddenMassage() override;
     void WriteHiddenMassage(std::string message) override;
 
 private:
     std::bitset<8> getHiddenByte();
+    bool CheckFile();
 
 };
 

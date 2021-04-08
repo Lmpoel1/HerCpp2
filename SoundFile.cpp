@@ -11,6 +11,7 @@ void SoundFile::readChunkInfo() {
     auto res = std::search(std::begin(fileBuffer), std::end(fileBuffer), std::begin(pattern), std::end(pattern));
     if(res == std::end(fileBuffer)) {
         std::cout << "Couldn't find FMT.\n";
+
     } else {
         std::cout << "Found FMT Index: " <<  res - fileBuffer.begin()<< std::endl;
 
