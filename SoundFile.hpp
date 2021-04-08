@@ -9,8 +9,8 @@
 
 #ifndef HERCPP2_SOUNDFILE_HPP
 #define HERCPP2_SOUNDFILE_HPP
-
-#define WAVFILEW "/Users/laurensdepoel/Development/HerCpp2/audiofiles/hidden.wav"
+/*
+#define WAVFILEW "/Users/laurensdepoel/Development/HerCpp2/hidden.wav"*/
 
 class SoundFile {
 protected:

@@ -20,6 +20,7 @@ void WaveFormat::ReadHiddenMassage() {
     if (!CheckFile()) {
         return;
     }
+    std::cout << "---------DATA---------\n";
 
     bool endOfMessage = false;
     while(!endOfMessage) {
@@ -35,7 +36,7 @@ void WaveFormat::ReadHiddenMassage() {
 
 void WaveFormat::WriteHiddenMassage(std::string message) {
 
-    if (CheckFile()) {
+    if (!CheckFile()) {
         return;
     }
     std::vector<std::bitset<8>> messageBytes;
@@ -62,7 +63,7 @@ void WaveFormat::WriteHiddenMassage(std::string message) {
             // load byte from index
             std::bitset<8> soundByte = this->fileBuffer.at(bufferIndex);
 
-            //std::cout << soundByte << " insert " << messageByte[i] << std::endl;
+            std::cout << soundByte << " insert " << messageByte[i] << std::endl;
             soundByte[0] = messageByte[i];
             // add 2 for for index
             //std::cout << soundByte << std::endl;
@@ -73,7 +74,7 @@ void WaveFormat::WriteHiddenMassage(std::string message) {
     }
 
     std::ofstream ofs;
-    ofs.open(WAVFILEW, std::ofstream::out | std::ofstream::trunc | std::ofstream::binary);
+    ofs.open("/Users/laurensdepoel/Development/HerCpp2/audiofiles/hidden.wav", std::ofstream::out | std::ofstream::trunc | std::ofstream::binary);
 
     for (std::bitset<8> byte : this->fileBuffer)
     {
@@ -91,7 +92,6 @@ std::bitset<8> WaveFormat::getHiddenByte() {
 
     for (int i = 0; i < 8; i++) {
         std::bitset<8> soundByte = this->fileBuffer.at(bufferIndex);
-        //bufferIndex += 2;
         bufferIndex += this->bitsPerSample / 8;
 
         byte = byte | soundByte << 7 >> i;

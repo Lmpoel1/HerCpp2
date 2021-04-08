@@ -7,6 +7,7 @@
 
 void SoundFile::readChunkInfo() {
     std::vector<int> pattern {0x66, 0x6d, 0x74, 0x20};
+    std::cout << "---------INFO---------\n";
 
     auto res = std::search(std::begin(fileBuffer), std::end(fileBuffer), std::begin(pattern), std::end(pattern));
     if(res == std::end(fileBuffer)) {
